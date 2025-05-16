@@ -96,4 +96,7 @@ public class AtendimentoController {
             System.out.println("Nenhum atendimento encontrado para este cliente.");
         }
     }
+    public List<Atendimento> getAtendimentos() {
+        return atendimentos;
+    }
 }

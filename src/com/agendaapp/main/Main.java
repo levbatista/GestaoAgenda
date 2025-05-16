@@ -1,14 +1,19 @@
 package com.agendaapp.main;
 
+import com.agendaapp.controller.AgendamentoController;
 import com.agendaapp.controller.AtendimentoController;
 import com.agendaapp.controller.ClienteController;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        //Controllers Principais
         ClienteController clienteController = new ClienteController();
         AtendimentoController atendimentoController = new AtendimentoController(clienteController.getClientes());
+        AgendamentoController agendamentoController = new AgendamentoController(atendimentoController.getAtendimentos());
         String opcao;
 
         do {
@@ -45,6 +50,15 @@ public class Main {
                     break;
                 case "7":
                     atendimentoController.listarAtendimentoPorCliente();
+                    break;
+                case "8":
+                    agendamentoController.cadastrarAgendamento();
+                    break;
+                case "9":
+                    agendamentoController.listarAgendamentos();
+                    break;
+                case "10":
+                    agendamentoController.listarPorCliente();
                     break;
                 case "X":
                     System.out.println("Saindo...");
