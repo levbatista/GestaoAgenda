@@ -1,22 +1,50 @@
 package com.agendaapp.main;
 
+import com.agendaapp.controller.AtendimentoController;
+import com.agendaapp.controller.ClienteController;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ClienteController clienteController = new ClienteController();
+        AtendimentoController atendimentoController = new AtendimentoController(clienteController.getClientes());
         String opcao;
 
         do {
             System.out.println("===== MENU =====");
             System.out.println("1 - Cadastrar Cliente");
+            System.out.println("2 - Listas Clientes");
+            System.out.println("3 - Editar Cliente");
+            System.out.println("4 - Excluir Cliente");
+            System.out.println("5 - Cadastrar Atendimento");
+            System.out.println("6 - Listar Atendimentos");
+            System.out.println("7 - Atendimentos por Cliente");
             System.out.println("X - Sair");
             System.out.print("Opção: ");
             opcao = scanner.nextLine();
 
             switch (opcao.toUpperCase()) {
                 case "1":
-                    System.out.println("Cadastro de cliente ainda não implementado.");
+                    clienteController.cadastrarCliente();
+                    break;
+                case "2":
+                    clienteController.listarClientes();
+                    break;
+                case "3":
+                    clienteController.editarCliente();
+                    break;
+                case "4":
+                    clienteController.excluirCliente();
+                    break;
+                case "5":
+                    atendimentoController.cadastrarAtendimento();
+                    break;
+                case "6":
+                    atendimentoController.listarAtendimentos();
+                    break;
+                case "7":
+                    atendimentoController.listarAtendimentoPorCliente();
                     break;
                 case "X":
                     System.out.println("Saindo...");
@@ -24,6 +52,9 @@ public class Main {
                 default:
                     System.out.println("Opção inválida.");
             }
+
+            System.out.println(); // espaço entre execuções
+
         } while (!opcao.equalsIgnoreCase("X"));
 
         scanner.close();
