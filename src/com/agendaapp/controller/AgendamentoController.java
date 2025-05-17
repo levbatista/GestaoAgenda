@@ -3,6 +3,7 @@ package com.agendaapp.controller;
 import com.agendaapp.model.Agendamento;
 import com.agendaapp.model.Atendimento;
 
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -114,6 +115,35 @@ public class AgendamentoController {
 
         if (!encontrado) {
             System.out.println("Nenhum agendamento encontrado para este cliente.");
+        }
+    }
+
+    public void exportarAgendamentos() {
+        if (agendamentos.isEmpty()) {
+            System.out.println("Nenhum agendamento para exportar.");
+            return;
+        }
+
+        String nomePasta = "export";
+        String nomeArquivo = nomePasta + "/agendamentos_exportados.txt";
+
+        try {
+            // Cria a pasta export se ela não existir
+            java.nio.file.Files.createDirectories(java.nio.file.Paths.get(nomePasta));
+
+            try (PrintWriter writer = new PrintWriter(nomeArquivo)) {
+                writer.println("===== Lista de Agendamentos =====\n");
+
+                for (Agendamento a : agendamentos) {
+                    writer.println(a.toString());
+                    writer.println("-------------------------------");
+                }
+
+                System.out.println("Agendamentos exportados com sucesso para o arquivo: " + nomeArquivo);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao exportar agendamentos: " + e.getMessage());
         }
     }
 

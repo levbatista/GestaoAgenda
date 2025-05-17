@@ -1,0 +1,8 @@
+===== Lista de Agendamentos =====
+
+Cliente: Ana Beatriz
+Serviço: Sessão de Coaching
+Início: 15/06/2025 | Término: 29/06/2025 | Frequência: Semanal
+Inscrição: 10/06/2025
+
+-------------------------------

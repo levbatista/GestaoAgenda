@@ -25,6 +25,10 @@ public class Main {
             System.out.println("5 - Cadastrar Atendimento");
             System.out.println("6 - Listar Atendimentos");
             System.out.println("7 - Atendimentos por Cliente");
+            System.out.println("8  - Cadastrar Agendamento");
+            System.out.println("9  - Listar Agendamentos");
+            System.out.println("10 - Agendamentos por Cliente");
+            System.out.println("11 - Exportar Agendamentos para TXT");
             System.out.println("X - Sair");
             System.out.print("Opção: ");
             opcao = scanner.nextLine();
@@ -59,6 +63,9 @@ public class Main {
                     break;
                 case "10":
                     agendamentoController.listarPorCliente();
+                    break;
+                case "11":
+                    agendamentoController.exportarAgendamentos();
                     break;
                 case "X":
                     System.out.println("Saindo...");
